@@ -46,8 +46,8 @@ bool Match::placeBet(double betSize, int rotationNum){
 //Alt. Constructor - takes in rotnums and date,
 //maybe add sport too
 //
-Match::Match(int rotNum1, int rotNum2, Date date_tmp)
-        : rotationNum1(rotNum1), rotationNum2(rotNum2), date(date_tmp){};
+Match::Match(int rotNum1, int rotNum2, string sprt, Date date_tmp)
+        : rotationNum1(rotNum1), rotationNum2(rotNum2), sport(sprt), date(date_tmp){};
 
 /*
 //Match(int rotNum1, int rotNum2, string date_tmp, double spread): rotationNum1(rotNum1), rotationNum2(rotNum2), date(date_tmp) liveSpread(spread){};

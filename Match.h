@@ -22,6 +22,9 @@ public:
     // User Gives - Must
     int rotationNum1 = 000; //Away
     int rotationNum2 = 000; //Home
+    const Date date = Date(0,0,0,0); //dd/mm/yyyy
+    const string sport = ""; // NFL, NBA, MLB, NHL, CFB, CBB, OTHER
+
     double liveSpread = 0;
     double homeMoney = 0;
     double awayMoney = 0; // Money bet on each team
@@ -34,7 +37,6 @@ public:
     string homeName = "";
     string awayName = "";
     double openSpread = 0;
-    const Date date = Date(0,0,0,0); //dd/mm/yyyy
 
 
 
@@ -43,7 +45,7 @@ public:
     Match() = default;
 
     //Alt. Constructor
-    Match(int rotNum1, int rotNum2, Date date_tmp);
+    Match(int rotNum1, int rotNum2, string sprt, Date date_tmp);
 
     //Match(int rotNum1, int rotNum2, string date_tmp, double spread): rotationNum1(rotNum1), rotationNum2(rotNum2), date(date_tmp) liveSpread(spread){};
     // Copy Constructor

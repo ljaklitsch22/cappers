@@ -10,16 +10,19 @@
 
 class BettingBoard{
 public:
-    Date date; // card date
+
     int numGames; // # of games on the board for the given week
     Match* board;
-
+    Date date; // card date
+    string sport = ""; // NFL, NBA, MLB, NHL, CFB, CBB, OTHER
 
     // Constructor
-    BettingBoard();
+    BettingBoard() = default;
 
     // Alt. Constructor
-    BettingBoard(const Date & date_, int numGames_, int startRotNum);
+    BettingBoard(const Date & date_, int numGames_, int startRotNum, string sprt);
+
+    BettingBoard & operator=(const BettingBoard & bb);
 
     // Mutators
     //void setDate(Date date);
@@ -36,6 +39,8 @@ public:
 
     //Print
     void printBoard();
+
+    void printBoard(string sport);
 };
 
 #endif //CAPPERS_BETTINGBOARD_H

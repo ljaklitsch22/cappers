@@ -12,7 +12,13 @@ CMakeFiles/cappers.dir/BettingBoard.cpp.o
  /Users/lukas/Desktop/cappers/Date.h
  /Users/lukas/Desktop/cappers/Match.h
 CMakeFiles/cappers.dir/Database.cpp.o
+ /Users/lukas/Desktop/cappers/BetSlip.h
+ /Users/lukas/Desktop/cappers/BettingBoard.h
+ /Users/lukas/Desktop/cappers/Capper.h
  /Users/lukas/Desktop/cappers/Database.cpp
+ /Users/lukas/Desktop/cappers/Database.h
+ /Users/lukas/Desktop/cappers/Date.h
+ /Users/lukas/Desktop/cappers/Match.h
 CMakeFiles/cappers.dir/Date.cpp.o
  /Users/lukas/Desktop/cappers/Date.cpp
  /Users/lukas/Desktop/cappers/Date.h

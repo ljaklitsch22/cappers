@@ -5,16 +5,16 @@
 #include "BettingBoard.h"
 
 // Constructor
-BettingBoard::BettingBoard(){};
+//BettingBoard::BettingBoard(){};
 
-// Alt. Constructor
-BettingBoard::BettingBoard(const Date & date_, int numGames_, int startRotNum):
-                date(date_), numGames(numGames_){
+// Alt. Constructor - football
+BettingBoard::BettingBoard(const Date & date_, int numGames_, int startRotNum, string sprt):
+                date(date_), numGames(numGames_), sport(sprt){
 
     board = new Match[numGames_];
 
     for(int i = 0; i < numGames_; ++i) {
-        board[i] = Match(startRotNum, startRotNum + 1, date);
+        board[i] = Match(startRotNum, startRotNum + 1, sprt, date);
         startRotNum += 2;
     }
 }
@@ -22,6 +22,17 @@ BettingBoard::BettingBoard(const Date & date_, int numGames_, int startRotNum):
 // Copy Const
 
 // Assignment Operator
+BettingBoard& BettingBoard::operator=(const BettingBoard & bb){
+    if(this != & bb){
+        BettingBoard tmp(bb);
+
+        std::swap(board, tmp.board);
+        numGames = bb.numGames;
+        const_cast<Date&>(date) = bb.date;
+        sport = bb.sport;
+    }
+    return *this;
+};
 
 // Mutators
 //void BettingBoard::setDate(Date date_tmp){};
@@ -54,8 +65,27 @@ Date BettingBoard::getDate(){return date;};
 Match BettingBoard::getMatch(int rotNum, Date date){return this->board[5];};
 
 //Print
-void BettingBoard::printBoard(){
-    for(int i = 0; i < numGames; ++i){
-        std::cout<< board[i].rotationNum1 << "/" << board[i].rotationNum2 <<std::endl;
+void BettingBoard::printBoard() {
+
+    // Print Sport
+    std::cout << sport << std::endl;
+
+    //Print The board
+    for (int i = 0; i < numGames; ++i) {
+        std::cout << board[i].rotationNum1 << "/" << board[i].rotationNum2 << std::endl;
     }
-};
+}
+
+//Print with sport specification
+void BettingBoard::printBoard(string sport) {
+
+    // Print Sport
+    std::cout << sport << std::endl;
+
+    //Print The board
+    for (int i = 0; i < numGames; ++i) {
+        if (board[i].sport == sport) {
+            std::cout << board[i].rotationNum1 << "/" << board[i].rotationNum2 << std::endl;
+        }
+    }
+}

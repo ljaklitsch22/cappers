@@ -52,19 +52,69 @@ int main() {
     if(tmp <= date){std::cout<<"Error\n";};
     tmp.print();
 
-     Match bills_pats(453,454, Date(21,12,2019, 4));
+     Match bills_pats(453,454, "NFL", Date(21,12,2019, 4));
+     Match bills_pats2(453,454, "NFL", Date(21,12,2019, 4));
+     Match tex_bucs(451,452, "NFL", Date(21,12,2019, 1));
+     BettingBoard bb(Date(21,12,2019), 16, 451, "NFL");
 
-     Match bills_pats2(453,454, Date(21,12,2019, 4));
+     //bb.printBoard();
 
-     Match tex_bucs(451,452, Date(21,12,2019, 1));
+     Match tex_bucs2(451,452, "NFL", Date(21,12,2019));
 
-     BettingBoard bb(Date(21,12,2019), 16, 451);
+    //** BB operator= Test **
+    BettingBoard bb_NFL(Date(21,12,2019), 16, 451, "NFL");
+    BettingBoard bb_NBA(Date(21,12,2019), 6, 501, "NBA");
+    bb_NFL.printBoard();
+    bb_NBA.printBoard();
 
-     bb.printBoard();
+    bb_NFL = bb_NBA;
+
+    bb_NFL.printBoard();
+    //bb_NBA.printBoard();
 
 
-     Match tex_bucs2(451,452, Date(21,12,2019, 1));
 
+
+
+
+
+
+
+
+    // Get the starting card nums each week, enter the sport,
+     // enter the date,
+     // create a bettingboard ->
+
+     //singleton to for each nfl betting board?
+
+
+     // ** Run program **
+/*
+     char quit = 'r';
+     bool run = true;
+
+     while(run){
+
+         string sport;
+         std::cout<< "Pick a sport"<< std::endl;
+         std::cin>>sport;
+
+         //search database a print board for the input sport
+
+         // user selects game and places bet
+         //need to update everything in that match
+
+         //Exit Program??
+         std::cout<< "Make another bet? or q to quit"<< std::endl;
+
+         //Exit condition
+         std::cin>>quit;
+         if(quit == 'q'){
+             run = false;
+         }
+     }
+
+     */
 
 }
 
