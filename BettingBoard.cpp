@@ -66,7 +66,7 @@ Date BettingBoard::getDate(){return date;};
 
 Match BettingBoard::getMatch(int rotNum, Date date){
         for(int i = 0; i < numGames; ++i){
-            if((rotNum == board[i].rotationNum1 || rotNum == board[i].rotationNum2)
+            if((rotNum == board[i].away.rotNum || rotNum == board[i].home.rotNum)
                 && const_cast<Date&>(board[i].date) == date){
                 return board[i];
             }
@@ -82,7 +82,7 @@ void BettingBoard::printBoard() {
 
     //Print The board
     for (int i = 0; i < numGames; ++i) {
-        std::cout << board[i].rotationNum1 << "/" << board[i].rotationNum2 << std::endl;
+        std::cout << board[i].away.rotNum << "/" << board[i].home.rotNum << std::endl;
     }
 }
 
@@ -95,7 +95,7 @@ void BettingBoard::printBoard(string sport) {
     //Print The board
     for (int i = 0; i < numGames; ++i) {
         if (board[i].sport == sport) {
-            std::cout << board[i].rotationNum1 << "/" << board[i].rotationNum2 << std::endl;
+            std::cout << board[i].away.rotNum << "/" << board[i].home.rotNum << std::endl;
         }
     }
 }

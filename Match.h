@@ -16,30 +16,27 @@
 
 typedef std::string string;
 
+struct Team{
+    int rotNum = 000; //Away
+    string name = "";
+    double moneyAvail = 0;
+    double moneyTotal = 0;
+    int counter = 0;  // num times team is picked - make hashing map to match values with spreads
+    double pctOn = .00;
+};
+
 class Match {
 
 public:
     // User Gives - Must
-    int rotationNum1 = 000; //Away
-    int rotationNum2 = 000; //Home
     const Date date = Date(0,0,0,0); //dd/mm/yyyy
     const string sport = ""; // NFL, NBA, MLB, NHL, CFB, CBB, OTHER
-
     double liveSpread = 0;
-    double homeMoney = 0;
-    double awayMoney = 0; // Money bet on each team
-    int awayCounter = 0;  // Number of bets placed on each team
-    int homeCounter = 0;  // num times team is picked - make hashing map to match values with spreads
-    double pctHome = .00;
-    double pctAway = .00;
+    double openSpread = 0;
+    Team home;
+    Team away;
 
     // VARS FOR Alt. Constr. - user updates
-    string homeName = "";
-    string awayName = "";
-    double openSpread = 0;
-
-
-
 
     // Default constructor
     Match() = default;
@@ -58,6 +55,8 @@ public:
 
     // Destructor
 
+    void placeBet(double betSize, int rotationNum, double spread);
+
     // ** Mutators **
     void updateSpread(double spread);
 
@@ -67,7 +66,7 @@ public:
     //void setGameTime(int time);
 
     // ** Accessors **
-    int getCardNum();
+    //int getCardNum();
     string getHomeTeam();
     string getAwayTeam();
     double getSpread();
@@ -80,8 +79,6 @@ public:
     int getHomeCounter();
     double getHomePct();
     double getAwayPct();
-
-    bool placeBet(double betSize, int rotationNum, double spread);
 };
 
 

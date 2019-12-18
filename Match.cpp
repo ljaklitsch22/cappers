@@ -5,49 +5,57 @@
 #include "Match.h"
 
 
-bool Match::placeBet(double betSize, int rotationNum, double spread){
-
-    //match rotation cardNum
+void Match::placeBet(double betSize, int rotNum, double spread){
 
     // check balance
-    /*
-    if(betSize > rotationNum1.moneyBet){
-        // place what is left that's on moneyBet's side
+    //  make sure there is enough money on Away team to balance
+    if(rotNum % 2 == 0){ //user is betting on home team
+        if(away.moneyAvail >= betSize){ //there is sufficient funds
+            ++away.counter;
+            away.moneyTotal += betSize;
+            away.moneyAvail -= betSize;
 
-        // add wager size to appropriate team
-        if(rotationNum == rotationNum1.rotationNum){
-            rotationNum1.moneyBet += rotationNum2.moneyBet;
+            std::cout<< "Bet Placed successfully"<<std::endl;
         }else{
-            rotationNum2.moneyBet += rotationNum2.moneyBet;
+            away.moneyTotal += away.moneyAvail;
+            // add to queue for when another bet is placed
+            std::cout<< "Not enough funds to back bet"<<std::endl;
+            std::cout<< away.moneyAvail<< "$ Placed"<<std::endl;
+            std::cout<<"Pending Wager for: "<< betSize-away.moneyAvail<<std::endl;
+            away.moneyAvail = 0;
+            ++away.counter;
         }
 
-    }else{ // there are sufficient funds for the liability of the bet so it can be placed
-        if(rotationNum == rotationNum1.rotationNum){
-            rotationNum1.moneyBet += betSize;
+    }else{ //user betting on away team
+        if(home.moneyAvail >= betSize){ //there is sufficient funds
+            ++home.counter;
+            home.moneyTotal += betSize;
+            home.moneyAvail -= betSize;
+
+            std::cout<< "Bet Placed successfully"<<std::endl;
+
         }else{
-            rotationNum2.rotationNum += betSize;
+            home.moneyTotal += home.moneyAvail;
+            // add to queue for when another bet is placed
+            std::cout<< "Not enough funds"<<std::endl;
+            std::cout<< home.moneyAvail<< "$ Placed"<<std::endl;
+            std::cout<<"Pending Wager for: "<< betSize-home.moneyAvail<<std::endl;
+            home.moneyAvail = 0;
+            ++home.counter;
         }
     }
-     */
-
-    // Update what needs to be
-
-    // Print "pending" if there is not matching money on the other side
-
-    // Print "Success" if there is enoguh money to take on the bet
-
-    return false;
-
 }
 
 // Default constructor
-
 
 //Alt. Constructor - takes in rotnums and date,
 //maybe add sport too
 //
 Match::Match(int rotNum1, int rotNum2, string sprt, Date date_tmp)
-        : rotationNum1(rotNum1), rotationNum2(rotNum2), sport(sprt), date(date_tmp){};
+        : sport(sprt), date(date_tmp){
+    away.rotNum = rotNum1;
+    home.rotNum = rotNum2;
+};
 
 /*
 //Match(int rotNum1, int rotNum2, string date_tmp, double spread): rotationNum1(rotNum1), rotationNum2(rotNum2), date(date_tmp) liveSpread(spread){};
@@ -59,17 +67,11 @@ Match::Match(const Match& match): rotationNum1(match.rotationNum1), rotationNum2
 // Assignment Operator
 Match& Match::operator=(const Match & match){
     if(this != & match){
-        rotationNum1 = match.rotationNum1;
-        rotationNum2 = match.rotationNum2;
+
+        home = match.home;
+        away = match.away;
+
         liveSpread = match.liveSpread;
-        homeMoney = match.homeMoney;
-        awayMoney = match.awayMoney;
-        homeCounter = match.homeCounter;
-        awayCounter = match.awayCounter;
-        pctHome = match.pctHome;
-        pctAway = match.pctAway;
-        homeName = match.homeName;
-        awayName = match.awayName;
         openSpread = match.openSpread;
         const_cast<Date&>(date) = match.date;
     }
@@ -81,31 +83,32 @@ Match& Match::operator=(const Match & match){
 // Destructor
 
 bool Match::operator==(const Match & match){
-    return rotationNum1 == match.rotationNum1 &&
-            rotationNum2 == match.rotationNum2 && (const_cast<Date&>(date) == match.date);
+    return home.rotNum == match.home.rotNum &&
+            away.rotNum == match.away.rotNum && (const_cast<Date&>(date) == match.date);
 };
 
 // ** Mutators **
 void Match::updateSpread(double spread){liveSpread = spread;};
 
 void Match::setOpenSpread(double spread){openSpread = spread;};
-void Match::setHomeTeam(const string &name){homeName = name;};
-void Match::setAwayTeam(const string &name){awayName = name;};
+void Match::setHomeTeam(const string &name){home.name = name;};
+void Match::setAwayTeam(const string &name){away.name = name;};
 //void Match::setGameTime(int time){date.hour = time;};
 
 // ** Mutators **
-int Match::getCardNum(){return rotationNum1 + rotationNum2;};
-string Match::getHomeTeam(){return homeName;};
-string Match::getAwayTeam(){return awayName;};
+//int Match::getCardNum(){return rotationNum1 + rotationNum2;};
+string Match::getHomeTeam(){return home.name;};
+string Match::getAwayTeam(){return away.name;};
 double Match::getSpread(){return liveSpread;};
 const Date Match::getDate(){return date;};
 
 // ** Accessors **
-double Match::getAwayMoney(){return awayMoney;};
-double Match::getHomeMoney(){return homeMoney;};
-int Match::getAwayCounter(){return awayCounter;};
-int Match::getHomeCounter(){return homeCounter;};
-double Match::getHomePct(){return pctHome;};
-double Match::getAwayPct(){return pctAway;};
+double Match::getAwayMoney(){return away.moneyAvail;};
+int Match::getAwayCounter(){return away.counter;};
+double Match::getAwayPct(){return away.pctOn;};
+
+double Match::getHomeMoney(){return home.moneyAvail;};
+int Match::getHomeCounter(){return home.counter;};
+double Match::getHomePct(){return home.pctOn;};
 
 
