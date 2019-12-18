@@ -28,6 +28,10 @@ CMakeFiles/cappers.dir/Match.cpp.o: ../Date.h
 CMakeFiles/cappers.dir/Match.cpp.o: ../Match.cpp
 CMakeFiles/cappers.dir/Match.cpp.o: ../Match.h
 
+CMakeFiles/cappers.dir/PendingQueue.cpp.o: ../BetSlip.h
+CMakeFiles/cappers.dir/PendingQueue.cpp.o: ../PendingQueue.cpp
+CMakeFiles/cappers.dir/PendingQueue.cpp.o: ../PendingQueue.h
+
 CMakeFiles/cappers.dir/main.cpp.o: ../BetSlip.h
 CMakeFiles/cappers.dir/main.cpp.o: ../BettingBoard.h
 CMakeFiles/cappers.dir/main.cpp.o: ../Capper.h

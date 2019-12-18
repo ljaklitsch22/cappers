@@ -3,9 +3,12 @@
 //
 
 #include "Match.h"
+#include "BetSlip.h"
 
-
-void Match::placeBet(double betSize, int rotNum, double spread){
+BetSlip Match::placeBet(double betSize, int rotNum, double spread, string username){
+    //confirm game is on the board
+    // check rotnum
+    // check current date
 
     // check balance
     //  make sure there is enough money on Away team to balance
@@ -17,7 +20,9 @@ void Match::placeBet(double betSize, int rotNum, double spread){
 
             std::cout<< "Bet Placed successfully"<<std::endl;
         }else{
-            away.moneyTotal += away.moneyAvail;
+            home.moneyAvail += betSize; //increase $$ on side
+            home.moneyTotal += away.moneyAvail;
+
             // add to queue for when another bet is placed
             std::cout<< "Not enough funds to back bet"<<std::endl;
             std::cout<< away.moneyAvail<< "$ Placed"<<std::endl;
@@ -35,7 +40,9 @@ void Match::placeBet(double betSize, int rotNum, double spread){
             std::cout<< "Bet Placed successfully"<<std::endl;
 
         }else{
-            home.moneyTotal += home.moneyAvail;
+            away.moneyAvail += betSize; //increase $$ on side
+            away.moneyTotal += away.moneyAvail;
+
             // add to queue for when another bet is placed
             std::cout<< "Not enough funds"<<std::endl;
             std::cout<< home.moneyAvail<< "$ Placed"<<std::endl;
@@ -44,11 +51,15 @@ void Match::placeBet(double betSize, int rotNum, double spread){
             ++home.counter;
         }
     }
+
+    //add wager to users betslips
+    //return betslip
+    return BetSlip(spread, rotNum, betSize, username);
 }
 
 // Default constructor
 
-//Alt. Constructor - takes in rotnums and date,
+//Alt. Constructor - takes in rotNums and date,
 //maybe add sport too
 //
 Match::Match(int rotNum1, int rotNum2, string sprt, Date date_tmp)

@@ -11,30 +11,21 @@ typedef std::string string;
 
 class BetSlip {
 
-private:
+public:
     double spread;
-    //Team team;
+    int rotNum;
     double juice;
     double betSize;
-    double payOut;
     string wagerType;
-    int rotNum;
+    string username;
+
+    double payOut;
 
     //default constructor
-    BetSlip();
+    BetSlip() = default;
 
     //constructor
-    BetSlip(int spread1, int rotNum1, double juice1, double betSize1, double payOut1, string wagerType1): spread(spread1),
-            juice(juice1), betSize(betSize1), wagerType(wagerType1), rotNum(rotNum1){
-
-        juice = juice/100;
-
-        if(juice > 0){
-            payOut = betSize * juice;
-        }else{
-            payOut = betSize / juice;
-        }
-    }
+    BetSlip(int spread1, int rotNum1, double betSize1, string un, double juice1 = -110, string wagerType1 = "string");
 
     // Default Constructor
 
@@ -47,12 +38,6 @@ private:
     // Destructor
 
     double getPayout(){return payOut;}
-
-    //
-
-        // add wager size to appropriate team
-
-
 };
 
 

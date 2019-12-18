@@ -10,31 +10,11 @@
 string
 /Users/lukas/Desktop/cappers/string
 
-/Users/lukas/Desktop/cappers/BettingBoard.cpp
-BettingBoard.h
-/Users/lukas/Desktop/cappers/BettingBoard.h
-
-/Users/lukas/Desktop/cappers/BettingBoard.h
-Match.h
-/Users/lukas/Desktop/cappers/Match.h
-Date.h
-/Users/lukas/Desktop/cappers/Date.h
-
 /Users/lukas/Desktop/cappers/Capper.h
 string
 /Users/lukas/Desktop/cappers/string
 BetSlip.h
 /Users/lukas/Desktop/cappers/BetSlip.h
-
-/Users/lukas/Desktop/cappers/Database.cpp
-Database.h
-/Users/lukas/Desktop/cappers/Database.h
-
-/Users/lukas/Desktop/cappers/Database.h
-Match.h
-/Users/lukas/Desktop/cappers/Match.h
-BettingBoard.h
-/Users/lukas/Desktop/cappers/BettingBoard.h
 
 /Users/lukas/Desktop/cappers/Date.h
 stdlib.h
@@ -53,6 +33,8 @@ time.h
 /Users/lukas/Desktop/cappers/Match.cpp
 Match.h
 /Users/lukas/Desktop/cappers/Match.h
+BetSlip.h
+/Users/lukas/Desktop/cappers/BetSlip.h
 
 /Users/lukas/Desktop/cappers/Match.h
 string
@@ -71,18 +53,4 @@ stdlib.h
 /Users/lukas/Desktop/cappers/stdlib.h
 Date.h
 /Users/lukas/Desktop/cappers/Date.h
-
-/Users/lukas/Desktop/cappers/main.cpp
-iostream
--
-BetSlip.h
-/Users/lukas/Desktop/cappers/BetSlip.h
-Date.h
-/Users/lukas/Desktop/cappers/Date.h
-Match.h
-/Users/lukas/Desktop/cappers/Match.h
-BettingBoard.h
-/Users/lukas/Desktop/cappers/BettingBoard.h
-Database.h
-/Users/lukas/Desktop/cappers/Database.h
 

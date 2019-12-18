@@ -12,7 +12,7 @@ class BettingBoard{
 public:
 
     int numGames; // # of games on the board for the given week
-    Match* board;
+    Match* board; // Array that stores matches
     Date date; // card date
     string sport = ""; // NFL, NBA, MLB, NHL, CFB, CBB, OTHER
 
@@ -22,6 +22,7 @@ public:
     // Alt. Constructor
     BettingBoard(const Date & date_, int numGames_, int startRotNum, string sprt);
 
+    // Assignment Operator
     BettingBoard & operator=(const BettingBoard & bb);
 
     // Mutators

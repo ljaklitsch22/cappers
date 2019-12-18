@@ -22,7 +22,7 @@ struct Team{
     double moneyAvail = 0;
     double moneyTotal = 0;
     int counter = 0;  // num times team is picked - make hashing map to match values with spreads
-    double pctOn = .00;
+    double pctOn = 0;
 };
 
 class Match {
@@ -33,6 +33,7 @@ public:
     const string sport = ""; // NFL, NBA, MLB, NHL, CFB, CBB, OTHER
     double liveSpread = 0;
     double openSpread = 0;
+    int totalBets = home.counter + away.counter;
     Team home;
     Team away;
 
@@ -55,7 +56,8 @@ public:
 
     // Destructor
 
-    void placeBet(double betSize, int rotationNum, double spread);
+    //maybe make return BetSlip
+    BetSlip placeBet(double betSize, int rotationNum, double spread, string username);
 
     // ** Mutators **
     void updateSpread(double spread);

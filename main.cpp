@@ -4,6 +4,7 @@
 #include "Match.h"
 #include "BettingBoard.h"
 #include "Database.h"
+#include "PendingQueue.h"
 
 typedef std::string string;
 int main() {
@@ -45,6 +46,11 @@ int main() {
 
 
 
+    //** Sign IN**
+    string username;
+    std::cout<< "Enter a Username"<< std::endl;
+    std::cin>>username;
+
     // Get the starting card nums each week, enter the sport,
      // enter the date,
      // create a bettingboard ->
@@ -64,19 +70,22 @@ int main() {
 
          // test database with return and no return
          //search database a print board for the input sport
-         //
+
+         PendingQueue pendingBets = PendingQueue();
+
+
          int rotNum;
          double betSize;
          double spread;
 
-         char quit = 'r';
-         bool run = true;
+         string quit = "r";
          string sport;
-         while (run) {
+         while (quit.compare("q") != 0){
 
              // ** Navigation to bet **
              std::cout << "Pick a sport" << std::endl;
              std::cin >> sport;
+             transform(sport.begin(), sport.end(), sport.begin(), ::toupper);
 
              int dy;
              int mn;
@@ -94,8 +103,8 @@ int main() {
              std::cin >> spread;
 
              // ** Place bet **
-             board.getMatch(rotNum, date).placeBet(betSize, rotNum, spread);
-
+             BetSlip slip = board.getMatch(rotNum, date).placeBet(betSize, rotNum, spread, username);
+             pendingBets.enqueue(slip);
 
              // user selects game and places bet
              //need to update everything in that match
@@ -106,9 +115,6 @@ int main() {
 
              //Exit condition
              std::cin >> quit;
-             if (quit == 'q') {
-                 run = false;
-             }
          }
      }
 }

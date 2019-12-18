@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/cappers.dir/BettingBoard.cpp.o"
   "CMakeFiles/cappers.dir/Database.cpp.o"
   "CMakeFiles/cappers.dir/Date.cpp.o"
+  "CMakeFiles/cappers.dir/PendingQueue.cpp.o"
   "cappers.pdb"
   "cappers"
 )

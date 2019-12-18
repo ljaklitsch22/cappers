@@ -113,6 +113,12 @@
 		<Unit filename="/Users/lukas/Desktop/cappers/Match.h">
 			<Option target="cappers"/>
 		</Unit>
+		<Unit filename="/Users/lukas/Desktop/cappers/PendingQueue.cpp">
+			<Option target="cappers"/>
+		</Unit>
+		<Unit filename="/Users/lukas/Desktop/cappers/PendingQueue.h">
+			<Option target="cappers"/>
+		</Unit>
 		<Unit filename="/Users/lukas/Desktop/cappers/main.cpp">
 			<Option target="cappers"/>
 		</Unit>

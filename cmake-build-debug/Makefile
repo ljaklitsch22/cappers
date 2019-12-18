@@ -258,6 +258,33 @@ Match.cpp.s:
 	$(MAKE) -f CMakeFiles/cappers.dir/build.make CMakeFiles/cappers.dir/Match.cpp.s
 .PHONY : Match.cpp.s
 
+PendingQueue.o: PendingQueue.cpp.o
+
+.PHONY : PendingQueue.o
+
+# target to build an object file
+PendingQueue.cpp.o:
+	$(MAKE) -f CMakeFiles/cappers.dir/build.make CMakeFiles/cappers.dir/PendingQueue.cpp.o
+.PHONY : PendingQueue.cpp.o
+
+PendingQueue.i: PendingQueue.cpp.i
+
+.PHONY : PendingQueue.i
+
+# target to preprocess a source file
+PendingQueue.cpp.i:
+	$(MAKE) -f CMakeFiles/cappers.dir/build.make CMakeFiles/cappers.dir/PendingQueue.cpp.i
+.PHONY : PendingQueue.cpp.i
+
+PendingQueue.s: PendingQueue.cpp.s
+
+.PHONY : PendingQueue.s
+
+# target to generate assembly for a file
+PendingQueue.cpp.s:
+	$(MAKE) -f CMakeFiles/cappers.dir/build.make CMakeFiles/cappers.dir/PendingQueue.cpp.s
+.PHONY : PendingQueue.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -309,6 +336,9 @@ help:
 	@echo "... Match.o"
 	@echo "... Match.i"
 	@echo "... Match.s"
+	@echo "... PendingQueue.o"
+	@echo "... PendingQueue.i"
+	@echo "... PendingQueue.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

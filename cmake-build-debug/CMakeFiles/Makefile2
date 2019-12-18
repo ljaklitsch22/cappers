@@ -71,7 +71,7 @@ CMAKE_BINARY_DIR = /Users/lukas/Desktop/cappers/cmake-build-debug
 CMakeFiles/cappers.dir/all:
 	$(MAKE) -f CMakeFiles/cappers.dir/build.make CMakeFiles/cappers.dir/depend
 	$(MAKE) -f CMakeFiles/cappers.dir/build.make CMakeFiles/cappers.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/lukas/Desktop/cappers/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target cappers"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/lukas/Desktop/cappers/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target cappers"
 .PHONY : CMakeFiles/cappers.dir/all
 
 # Include target in all.
@@ -81,7 +81,7 @@ all: CMakeFiles/cappers.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cappers.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/lukas/Desktop/cappers/cmake-build-debug/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/lukas/Desktop/cappers/cmake-build-debug/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/cappers.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/lukas/Desktop/cappers/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/cappers.dir/rule
