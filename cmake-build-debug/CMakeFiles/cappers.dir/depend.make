@@ -38,5 +38,6 @@ CMakeFiles/cappers.dir/main.cpp.o: ../Capper.h
 CMakeFiles/cappers.dir/main.cpp.o: ../Database.h
 CMakeFiles/cappers.dir/main.cpp.o: ../Date.h
 CMakeFiles/cappers.dir/main.cpp.o: ../Match.h
+CMakeFiles/cappers.dir/main.cpp.o: ../PendingQueue.h
 CMakeFiles/cappers.dir/main.cpp.o: ../main.cpp
 

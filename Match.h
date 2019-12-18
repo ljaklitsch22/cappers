@@ -33,7 +33,7 @@ public:
     const string sport = ""; // NFL, NBA, MLB, NHL, CFB, CBB, OTHER
     double liveSpread = 0;
     double openSpread = 0;
-    int totalBets = home.counter + away.counter;
+    //int totalBets = home.counter + away.counter;
     Team home;
     Team away;
 

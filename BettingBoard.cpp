@@ -7,6 +7,9 @@
 // Constructor
 //BettingBoard::BettingBoard(){};
 
+//returns true if the rotnum is in the board
+//bool BettingBoard::checkMatch(int rotnum){}
+
 // Alt. Constructor - football
 BettingBoard::BettingBoard(const Date & date_, int numGames_, int startRotNum, string sprt):
                 date(date_), numGames(numGames_), sport(sprt){

@@ -131,3 +131,8 @@ ItemType PendingQueue::front() const {
 size_t PendingQueue::size() const {
     return mySize;
 }
+
+// Updates the pending q to check
+void PendingQueue::update(){
+
+}

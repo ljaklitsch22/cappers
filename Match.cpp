@@ -8,6 +8,8 @@
 BetSlip Match::placeBet(double betSize, int rotNum, double spread, string username){
     //confirm game is on the board
     // check rotnum
+
+
     // check current date
 
     // check balance
@@ -18,15 +20,15 @@ BetSlip Match::placeBet(double betSize, int rotNum, double spread, string userna
             away.moneyTotal += betSize;
             away.moneyAvail -= betSize;
 
-            std::cout<< "Bet Placed successfully"<<std::endl;
+            std::cout<< "Bet Placed successfully" <<std::endl;
         }else{
             home.moneyAvail += betSize; //increase $$ on side
             home.moneyTotal += away.moneyAvail;
 
             // add to queue for when another bet is placed
-            std::cout<< "Not enough funds to back bet"<<std::endl;
-            std::cout<< away.moneyAvail<< "$ Placed"<<std::endl;
-            std::cout<<"Pending Wager for: "<< betSize-away.moneyAvail<<std::endl;
+            std::cout<< "Not enough funds to back bet" <<std::endl;
+            std::cout<< away.moneyAvail<< "$ Placed" <<std::endl;
+            std::cout<< "Pending Wager for: " << betSize-away.moneyAvail<<std::endl;
             away.moneyAvail = 0;
             ++away.counter;
         }
@@ -37,16 +39,16 @@ BetSlip Match::placeBet(double betSize, int rotNum, double spread, string userna
             home.moneyTotal += betSize;
             home.moneyAvail -= betSize;
 
-            std::cout<< "Bet Placed successfully"<<std::endl;
+            std::cout<< "Bet Placed successfully" <<std::endl;
 
         }else{
             away.moneyAvail += betSize; //increase $$ on side
             away.moneyTotal += away.moneyAvail;
 
             // add to queue for when another bet is placed
-            std::cout<< "Not enough funds"<<std::endl;
-            std::cout<< home.moneyAvail<< "$ Placed"<<std::endl;
-            std::cout<<"Pending Wager for: "<< betSize-home.moneyAvail<<std::endl;
+            std::cout<< "Not enough funds" <<std::endl;
+            std::cout<< home.moneyAvail<< "$ Placed" <<std::endl;
+            std::cout<< "Pending Wager for: " << betSize-home.moneyAvail<<std::endl;
             home.moneyAvail = 0;
             ++home.counter;
         }

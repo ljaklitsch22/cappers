@@ -38,9 +38,10 @@ public:
     Date getDate();
     Match getMatch(int rotNum, Date date);
 
+
+
     //Print
     void printBoard();
-
     void printBoard(string sport);
 };
 
