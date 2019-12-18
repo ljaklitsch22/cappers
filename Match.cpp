@@ -5,7 +5,7 @@
 #include "Match.h"
 
 
-bool Match::placeBet(double betSize, int rotationNum){
+bool Match::placeBet(double betSize, int rotationNum, double spread){
 
     //match rotation cardNum
 
@@ -108,4 +108,4 @@ int Match::getHomeCounter(){return homeCounter;};
 double Match::getHomePct(){return pctHome;};
 double Match::getAwayPct(){return pctAway;};
 
-const Match Match::getMatch(){return *this;};
+

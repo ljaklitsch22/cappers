@@ -31,6 +31,7 @@ CMakeFiles/cappers.dir/Match.cpp.o: ../Match.h
 CMakeFiles/cappers.dir/main.cpp.o: ../BetSlip.h
 CMakeFiles/cappers.dir/main.cpp.o: ../BettingBoard.h
 CMakeFiles/cappers.dir/main.cpp.o: ../Capper.h
+CMakeFiles/cappers.dir/main.cpp.o: ../Database.h
 CMakeFiles/cappers.dir/main.cpp.o: ../Date.h
 CMakeFiles/cappers.dir/main.cpp.o: ../Match.h
 CMakeFiles/cappers.dir/main.cpp.o: ../main.cpp

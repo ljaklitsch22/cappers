@@ -61,8 +61,18 @@ bool BettingBoard::onBoard(const Match & match){
 
 // Accessors
 int BettingBoard::getNumGames(){return numGames;};
+
 Date BettingBoard::getDate(){return date;};
-Match BettingBoard::getMatch(int rotNum, Date date){return this->board[5];};
+
+Match BettingBoard::getMatch(int rotNum, Date date){
+        for(int i = 0; i < numGames; ++i){
+            if((rotNum == board[i].rotationNum1 || rotNum == board[i].rotationNum2)
+                && const_cast<Date&>(board[i].date) == date){
+                return board[i];
+            }
+        }
+    std::cout << "Match not available. Press q to quit. Or Enter another date." << std::endl;
+};
 
 //Print
 void BettingBoard::printBoard() {

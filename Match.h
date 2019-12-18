@@ -72,7 +72,6 @@ public:
     string getAwayTeam();
     double getSpread();
     const Date getDate();
-    const Match getMatch();
 
     // Needed? Yes or No?
     double getAwayMoney();
@@ -82,7 +81,7 @@ public:
     double getHomePct();
     double getAwayPct();
 
-    bool placeBet(double betSize, int rotationNum);
+    bool placeBet(double betSize, int rotationNum, double spread);
 };
 
 

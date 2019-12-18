@@ -8,8 +8,6 @@
 #include "Match.h"
 #include "BettingBoard.h"
 
-int MAXBOARDS = 20;
-
 class Database{
 public:
     // Array of Bettingboards
@@ -17,7 +15,15 @@ public:
     int numBoards = 0;
 
     void addBoard(const BettingBoard & bb);
+    BettingBoard & getBoard(string sport, Date date);
 
+/*
+static Database & getInstance()
+    {
+        static Database instance;
+        return instance;
+    }
+*/
     Database() = default;
 };
 
