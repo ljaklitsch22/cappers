@@ -30,19 +30,18 @@ public:
     //void setMatch(const Match & match);
 
     void addMatch(const Match & match);
-    bool onBoard(const Match & match);
 
 
     // Accessors
     int getNumGames();
     Date getDate();
-    Match getMatch(int rotNum, Date date);
-
+    Match getMatch(int rotNum);
+    bool onBoard(const Match & match);
+    bool onBoard(int rotNum);
 
 
     //Print
     void printBoard();
-    void printBoard(string sport);
 };
 
 #endif //CAPPERS_BETTINGBOARD_H

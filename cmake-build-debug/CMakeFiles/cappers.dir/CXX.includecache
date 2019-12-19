@@ -22,6 +22,10 @@ string
 BetSlip.h
 /Users/lukas/Desktop/cappers/BetSlip.h
 
+/Users/lukas/Desktop/cappers/Database.cpp
+Database.h
+/Users/lukas/Desktop/cappers/Database.h
+
 /Users/lukas/Desktop/cappers/Database.h
 Match.h
 /Users/lukas/Desktop/cappers/Match.h
@@ -59,28 +63,6 @@ stdlib.h
 /Users/lukas/Desktop/cappers/stdlib.h
 Date.h
 /Users/lukas/Desktop/cappers/Date.h
-
-/Users/lukas/Desktop/cappers/PendingQueue.h
-BetSlip.h
-/Users/lukas/Desktop/cappers/BetSlip.h
-stddef.h
--
-
-/Users/lukas/Desktop/cappers/main.cpp
-iostream
--
-BetSlip.h
-/Users/lukas/Desktop/cappers/BetSlip.h
-Date.h
-/Users/lukas/Desktop/cappers/Date.h
-Match.h
-/Users/lukas/Desktop/cappers/Match.h
-BettingBoard.h
-/Users/lukas/Desktop/cappers/BettingBoard.h
-Database.h
-/Users/lukas/Desktop/cappers/Database.h
-PendingQueue.h
-/Users/lukas/Desktop/cappers/PendingQueue.h
-tuple
+unordered_map
 -
 

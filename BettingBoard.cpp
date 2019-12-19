@@ -47,7 +47,6 @@ void BettingBoard::addMatch(const Match & match) {
             board[numGames] = match;
             ++numGames;
         }
-
         // Do nothing if its not on board
         std::cout<< "GAME IS ALREADY ADDED\n" <<std::endl;
     }
@@ -62,15 +61,24 @@ bool BettingBoard::onBoard(const Match & match){
     return false;
 }
 
+// returns true if match is contained in the "this" board
+bool BettingBoard::onBoard(int rotNum){
+    for(int i = 0; i < numGames; ++i){
+        if((rotNum == board[i].away.rotNum || rotNum == board[i].home.rotNum)){
+            return true;
+        }
+    }
+    return false;
+}
+
 // Accessors
 int BettingBoard::getNumGames(){return numGames;};
 
 Date BettingBoard::getDate(){return date;};
 
-Match BettingBoard::getMatch(int rotNum, Date date){
+Match BettingBoard::getMatch(int rotNum){
         for(int i = 0; i < numGames; ++i){
-            if((rotNum == board[i].away.rotNum || rotNum == board[i].home.rotNum)
-                && const_cast<Date&>(board[i].date) == date){
+            if((rotNum == board[i].away.rotNum || rotNum == board[i].home.rotNum)){
                 return board[i];
             }
         }
@@ -81,24 +89,14 @@ Match BettingBoard::getMatch(int rotNum, Date date){
 void BettingBoard::printBoard() {
 
     // Print Sport
-    std::cout << sport << std::endl;
+    //std::cout << sport << std::endl;
 
     //Print The board
     for (int i = 0; i < numGames; ++i) {
-        std::cout << board[i].away.rotNum << "/" << board[i].home.rotNum << std::endl;
-    }
-}
-
-//Print with sport specification
-void BettingBoard::printBoard(string sport) {
-
-    // Print Sport
-    std::cout << sport << std::endl;
-
-    //Print The board
-    for (int i = 0; i < numGames; ++i) {
-        if (board[i].sport == sport) {
-            std::cout << board[i].away.rotNum << "/" << board[i].home.rotNum << std::endl;
+        std::cout << board[i].away.rotNum << "/" << board[i].home.rotNum<< "\t";
+        if (i == 4){
+            std::cout<<std::endl;
         }
     }
+    std::cout<<std::endl;
 }

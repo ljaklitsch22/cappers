@@ -13,13 +13,17 @@
 #include <ctime>
 #include "stdlib.h"
 #include "Date.h"
+#include <unordered_map>
 
 typedef std::string string;
+//typedef away.spreads.find(spread)->second awayMoneyAvail;
 
 struct Team{
     int rotNum = 000; //Away
     string name = "";
-    double moneyAvail = 0;
+    // Map of <spreads, money>
+    unordered_map<double, double> spreads;
+
     double moneyTotal = 0;
     int counter = 0;  // num times team is picked - make hashing map to match values with spreads
     double pctOn = 0;
@@ -75,8 +79,8 @@ public:
     const Date getDate();
 
     // Needed? Yes or No?
-    double getAwayMoney();
-    double getHomeMoney();
+    //double getAwayMoney();
+    //double getHomeMoney();
     int getAwayCounter();
     int getHomeCounter();
     double getHomePct();

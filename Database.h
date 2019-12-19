@@ -16,6 +16,8 @@ public:
 
     void addBoard(const BettingBoard & bb);
     BettingBoard & getBoard(string sport, Date date);
+    bool hasBoard(string sport, Date date);
+
 
 /*
 static Database & getInstance()

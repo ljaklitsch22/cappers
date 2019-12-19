@@ -61,26 +61,28 @@ int main() {
 
          string quit = "r";
          string sport;
+        BetSlip slip;
+        BettingBoard board;
 
-         while (quit != "q"){
+         while (quit != "q") {
 
              // ** Navigation to bet **
              std::cout << "Pick a sport" << std::endl;
              printArray(SPORTS);
 
-            std::cin >> sport; //
+             std::cin >> sport; //
              transform(sport.begin(), sport.end(), sport.begin(), ::toupper);
              // check if entered sport is available
              string *spt = std::find(std::begin(SPORTS), std::end(SPORTS), sport);
-            // When the element is not found, std::find returns the end of the range
+             // When the element is not found, std::find returns the end of the range
 
+             //sport checker
              while (spt == std::end(SPORTS)) {
                  std::cout << "Enter a valid sport " << std::endl;
                  std::cin >> sport;
                  transform(sport.begin(), sport.end(), sport.begin(), ::toupper);
                  spt = std::find(std::begin(SPORTS), std::end(SPORTS), sport);
              }
-
 
              int dy;
              int mn;
@@ -91,35 +93,39 @@ int main() {
 
              Date date = Date(dy, mn, 2019);
 
-             BettingBoard board = db.getBoard(sport, date);
-             std::cout << "Enter rotation #" << std::endl;
-             std::cin >> rotNum;
-             // fix this so its one bool call
-             while(!(board.onBoard(board.getMatch(rotNum, date)))){
-                 std::cout<<"Please select an available game"<<std::endl;
-                 board.printBoard();
-                 std::cin>>rotNum;
+             if (!(db.hasBoard(sport, date))) { //search for board based on sport and date
+                 std::cout << "No games available" << std::endl;
+             } else {
+                 board = db.getBoard(sport, date);
+                 std::cout << "Enter rotation #" << std::endl;
+                 std::cin >> rotNum;
+
+                 while (!board.onBoard(rotNum)) {
+                     std::cout << "Please enter a valid rotation #" << std::endl;
+                     board.printBoard(); // make horizontal
+                     std::cin >> rotNum;
+                 }
+
+                 // Make sure user has enough funds
+                 std::cout << "Enter bet size" << std::endl;
+                 std::cin >> betSize;
+
+
+                 std::cout << "Enter spread" << std::endl;
+                 std::cin >> spread;
+
+                 // ** Place bet **
+                 slip = board.getMatch(rotNum).placeBet(betSize, rotNum, spread, username);
+                 pendingBets.enqueue(slip);
+
+                 // user selects game and places bet
+                 //need to update everything in that match
+
+                 //Exit Program??
+                 std::cout << "Make another bet? or q to quit" << std::endl;
+                 //Exit condition
+                 std::cin >> quit;
              }
-
-             // Make sure user has enough funds
-             std::cout << "Enter bet size" << std::endl;
-             std::cin >> betSize;
-
-
-             std::cout << "Enter spread" << std::endl;
-             std::cin >> spread;
-
-             // ** Place bet **
-             BetSlip slip = board.getMatch(rotNum, date).placeBet(betSize, rotNum, spread, username);
-             pendingBets.enqueue(slip);
-
-             // user selects game and places bet
-             //need to update everything in that match
-
-             //Exit Program??
-             std::cout << "Make another bet? or q to quit" << std::endl;
-             //Exit condition
-             std::cin >> quit;
          }
 }
 

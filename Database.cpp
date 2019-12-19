@@ -25,10 +25,19 @@ BettingBoard & Database::getBoard(string sport, Date date){
                 return main[i]; // or just print
             }
         }
-        std::cout << "Board not available. Press q to quit. Or Enter another date." << std::endl;
+        std::cout << "Board not available. Enter a valid date." << std::endl;
 
         // What to return if user quits. needs to be a board
 }
 
+bool Database::hasBoard(string sport, Date date){
+
+    for (int i = 0; i < numBoards; ++i) {
+        if (main[i].sport == sport && main[i].date == date) {
+            return true; // or just print
+        }
+    }
+    return false;
+}
 
 

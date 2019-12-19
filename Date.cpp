@@ -1,11 +1,11 @@
 //
 // Created by Lukas Jaklitsch on 12/16/19.
-//
+// implements the date class
 
 #include "Date.h"
 
-
-Date::Date(int dy, int mnth, int yr, int hr): day(dy), month(mnth), year(yr), hour(hr), weekday(0){};
+Date::Date(int dy, int mnth, int yr, int hr):
+            day(dy), month(mnth), year(yr), hour(hr), weekday(0){};
 
 Date & Date::operator=(const Date & date){
     if(this != & date){

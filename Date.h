@@ -1,6 +1,6 @@
 //
 // Created by Lukas Jaklitsch on 12/16/19.
-//
+// Definition - Date class in dd/mm/yy wkdy(0-6) hr (24)
 
 #ifndef CAPPERS_DATE_H
 #define CAPPERS_DATE_H
@@ -15,17 +15,16 @@
 using namespace std;
 typedef std::string string;
 
-
 class Date{
 public:
     int day = 0;
     int month = 00;
     int year = 0000;
-    int hour = 0;
-    int weekday = 0;
+    int hour = 0; //24hr
+    int weekday = 0; //
 
 
-    //Ctor
+    //Constructortor
     Date() = default;
 
     //Copy Constructor

@@ -5,59 +5,100 @@
 #include "Match.h"
 #include "BetSlip.h"
 
-BetSlip Match::placeBet(double betSize, int rotNum, double spread, string username){
-    //confirm game is on the board
-    // check rotnum
 
+//unordered_map<string, int> umap;
+//
+//    // inserting values by using [] operator
+//    umap["GeeksforGeeks"] = 10;
+
+BetSlip Match::placeBet(double betSize, int rotNum, double spread, string username) {
+    // confirm game is on the board
+    // check rotnum
 
     // check current date
 
-    // check balance
-    //  make sure there is enough money on Away team to balance
-    if(rotNum % 2 == 0){ //user is betting on home team
-        if(away.moneyAvail >= betSize){ //there is sufficient funds
-            ++away.counter;
-            away.moneyTotal += betSize;
-            away.moneyAvail -= betSize;
+    // match spread and money amount on opposite side
+    // check if sprea exists, retrieve moneyAvail
+    // compare it to betSize
 
-            std::cout<< "Bet Placed successfully" <<std::endl;
-        }else{
-            home.moneyAvail += betSize; //increase $$ on side
-            home.moneyTotal += away.moneyAvail;
+    // home.spreads[spread] or home
+    // home.spreads[spread*-1] or home
 
-            // add to queue for when another bet is placed
-            std::cout<< "Not enough funds to back bet" <<std::endl;
-            std::cout<< away.moneyAvail<< "$ Placed" <<std::endl;
-            std::cout<< "Pending Wager for: " << betSize-away.moneyAvail<<std::endl;
-            away.moneyAvail = 0;
-            ++away.counter;
+    //Which team is user betting on
+    if (rotNum % 2 == 0) { //user is betting on home team
+        if (away.spreads.find((spread * -1)) == away.spreads.end()
+            || away.spreads[spread*-1] == 0) { // check spread
+
+            //No bets placed on other side of bet yet or 0
+            home.spreads[spread] += betSize; //increase funds available on home
+
+            std::cout << "Bet pending..." << std::endl;
+
+        } else { //spread found, check available funds
+
+            // check how much funds
+            if (away.spreads.find((spread * -1))->second >= betSize) { //place bet in full
+                //place bet in full
+                ++home.counter;
+                home.moneyTotal += betSize;
+                away.spreads[spread*-1] -= betSize;
+
+                std::cout << "Bet Placed successfully" << std::endl;
+
+                // not enough funds for entire bet
+            } else {                 // place partial bet
+                // assigns the home money avail to whats left on the bet
+                // not all of it is placed
+                home.spreads[spread] += betSize - away.spreads.find(spread * -1)->second; //
+                home.moneyTotal += away.spreads.find(spread * -1)->second;
+
+                // add to queue for when another bet is placed
+                std::cout << "Not enough funds to back entire bet" << std::endl;
+                std::cout << away.spreads.find(spread * -1)->second << "$ Placed" << std::endl;
+                std::cout << "Pending Wager for: $" << betSize - away.spreads.find(spread * -1)->second << std::endl;
+                away.spreads[spread*-1]= 0;
+                ++home.counter;
+            }
         }
+    } else { // user is betting on away team
+        if (home.spreads.find((spread * -1)) == home.spreads.end()
+            || home.spreads.find((spread * -1))->second == 0) { // check spread
 
-    }else{ //user betting on away team
-        if(home.moneyAvail >= betSize){ //there is sufficient funds
-            ++home.counter;
-            home.moneyTotal += betSize;
-            home.moneyAvail -= betSize;
+            //No bets placed on other side of bet yet or 0
+            away.spreads[spread] += betSize; //increase funds available on home
 
-            std::cout<< "Bet Placed successfully" <<std::endl;
+            std::cout << "Bet pending..." << std::endl;
 
-        }else{
-            away.moneyAvail += betSize; //increase $$ on side
-            away.moneyTotal += away.moneyAvail;
+        } else { //spread found, check available funds
 
-            // add to queue for when another bet is placed
-            std::cout<< "Not enough funds" <<std::endl;
-            std::cout<< home.moneyAvail<< "$ Placed" <<std::endl;
-            std::cout<< "Pending Wager for: " << betSize-home.moneyAvail<<std::endl;
-            home.moneyAvail = 0;
-            ++home.counter;
+            // check how much funds
+            if (home.spreads.find((spread * -1))->second >= betSize) { //place bet in full
+                //place bet in full
+                ++away.counter;
+                away.moneyTotal += betSize;
+                away.spreads[spread*-1] -= betSize;
+
+                std::cout << "Bet Placed successfully" << std::endl;
+
+                // not enough funds for entire bet
+            } else {                 // place partial bet
+                // assigns the home money avail to whats left on the bet
+                // not all of it is placed
+                away.spreads[spread] += betSize - home.spreads.find(spread * -1)->second; //
+                away.moneyTotal += home.spreads.find(spread * -1)->second;
+
+                // add to queue for when another bet is placed
+                std::cout << "Not enough funds to back entire bet" << std::endl;
+                std::cout << home.spreads[spread*-1] << "$ Placed" << std::endl;
+                std::cout << "Pending Wager for: $" << betSize - home.spreads.find(spread * -1)->second << std::endl;
+                home.spreads[spread*-1] = 0;
+                ++away.counter;
+            }
         }
     }
-
-    //add wager to users betslips
-    //return betslip
     return BetSlip(spread, rotNum, betSize, username);
 }
+
 
 // Default constructor
 
@@ -116,11 +157,11 @@ double Match::getSpread(){return liveSpread;};
 const Date Match::getDate(){return date;};
 
 // ** Accessors **
-double Match::getAwayMoney(){return away.moneyAvail;};
+//double Match::getAwayMoney(){return away.moneyAvail;};
 int Match::getAwayCounter(){return away.counter;};
 double Match::getAwayPct(){return away.pctOn;};
 
-double Match::getHomeMoney(){return home.moneyAvail;};
+//double Match::getHomeMoney(){return home.moneyAvail;};
 int Match::getHomeCounter(){return home.counter;};
 double Match::getHomePct(){return home.pctOn;};
 
